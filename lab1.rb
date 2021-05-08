@@ -22,11 +22,10 @@ class ComplexClass
         result=ComplexClass.new(r,i)
 
     end
-
     def self.bulkAdd(objArr)
         @@count[:bulkAdd]+=1
         start=ComplexClass.new(0,0)
-        objArr.each { |obj| start=start+obj}
+        objArr.each { |obj| start=start+obj } #reduce inject
         start.printComplex
 
     end 
