@@ -17,15 +17,15 @@ default: &default
 
 development:
   <<: *default
-  database: railslab_development
+  database: railslabnew_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: railslab_test
+  database: railslabnew_test
 
 production:
   <<: *default
-  database: railslab_production
+  database: railslabnew_production
