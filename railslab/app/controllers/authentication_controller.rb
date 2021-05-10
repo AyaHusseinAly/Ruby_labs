@@ -1,22 +1,18 @@
 class AuthenticationController < ApplicationController
-    #skip_before_action :authenticate_request
-    def initialize()
-        payload = { data: 'test' }
+ 
 
-        # IMPORTANT: set nil as password parameter
-        @token = JWT.encode payload, nil, 'none'
-
-        puts @token
-
-        @decoded_token = JWT.decode @token, nil, false
-
-        puts @decoded_token
-    end 
-
-    def authenticate
-        render  json: {token: @token }
-
-        
+    # LOGGING IN
+    def login
+      @user = User.find_by(email: params[:email])
+  
+      #if @user && @user.authenticate(params[:password])
+        token = encode_token({user_id: @user.id})
+        render json: {user: @user, token: token}
+      #else
+      #  render json: {error: "Invalid username or password"}
+      #end
     end
+  
 
 end
+
