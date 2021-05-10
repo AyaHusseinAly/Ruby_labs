@@ -1,3 +1,5 @@
+<div class="container p-5 bg-light">
+<h4>Article</h4>
 
 <p>
   <strong>Title:</strong>
@@ -8,7 +10,8 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
-<h2>Comments</h2>
+<hr>
+<h4>Comments</h4>
 <% @article.comments.each do |comment| %>
   <p>
     <strong>Commenter:</strong>
@@ -25,7 +28,8 @@
                data: { confirm: 'Are you sure?' } %>
 </p>
 <% end %>
-<h2>Add a comment:</h2>
+<hr>
+<h6>Add a comment:</h6>
 <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
 
   <p>
@@ -38,3 +42,4 @@
 <% end %>
 
 <%= link_to 'Back to home', articles_path %>
+</div>
