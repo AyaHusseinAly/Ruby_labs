@@ -6,6 +6,9 @@
     <div>
     <h6>Welcome</h6><p><%=current_user.email%></p>
     </div>
+    <% if cannot? :read, @article %>
+      <p>not given read permission</p>
+    <%end%>
     <p>
       <%= link_to 'logout', destroy_user_session_path,
                       method: :delete, class: "btn bg-light" %>

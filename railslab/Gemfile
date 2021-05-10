@@ -9,6 +9,12 @@ gem 'rails', '~> 5.2.6'
 #gem 'sqlite3'
 gem 'pg'
 gem 'devise'
+#gem 'grape'
+gem "active_model_serializers", "~> 0.8.0"
+gem 'jwt'
+gem 'cancancan'
+
+
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

@@ -3,7 +3,13 @@ class ArticlesController < ApplicationController
 
   def index
     @articles=Article.all.order("id")
+    #@articles=Article.accessible_by(current_ability)
+
   end
+  def api_index
+    @articles=Article.all.order("id")
+    render :json => @articles ,:root => false
+  end 
   def new
     @article=Article.new()
   end
