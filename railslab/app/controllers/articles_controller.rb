@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   #before_action :authenticate_user!
+  skip_before_action :authenticate_request
+
 
   def index
     @articles=Article.all.order("id")
@@ -14,7 +16,8 @@ class ArticlesController < ApplicationController
     @article=Article.new()
   end
   def create
-    @article = Article.new(article_params)
+    #@article = Article.new(article_params)
+    @article=current_user.articles.build(article_params)
     if @article.save
       redirect_to @article
     else

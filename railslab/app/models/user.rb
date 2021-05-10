@@ -1,15 +1,18 @@
 
 class User < ActiveRecord::Base
-  #has_and_belongs_to_many :roles
+  has_many :articles
+  has_secure_password
 
-  def role?(role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
-  end  
-  
+
+
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
+
+
+  def generate_jwt
+    JWT.encode({ id: id,
+      exp: 60.days.from_now.to_i },
+      Rails.application.credentials.secret_key_base)
+  end
 end
 
-class Role < ActiveRecord::Base
-  has_and_belongs_to_many :users
-end
