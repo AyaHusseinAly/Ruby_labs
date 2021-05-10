@@ -9,10 +9,9 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :validatable
 
 
-  def generate_jwt
-    JWT.encode({ id: id,
-      exp: 60.days.from_now.to_i },
-      Rails.application.credentials.secret_key_base)
+  def self.authenticate(username, password)
+    user = User.find_for_authentication(:username => username)
+    user&.valid_password?(password) ? user : nil
   end
 end
 

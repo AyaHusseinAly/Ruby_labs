@@ -1,8 +1,5 @@
 class ArticlesController < ApplicationController
-  #before_action :authenticate_user!
-  #skip_before_action :authenticate_request
-  before_action :authorized
-  #load_and_authorize_resource
+  before_action :authorized, only:[:api_index]
 
 
   def index
