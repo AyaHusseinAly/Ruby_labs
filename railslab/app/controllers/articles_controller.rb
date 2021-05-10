@@ -1,12 +1,9 @@
 class ArticlesController < ApplicationController
   #before_action :authenticate_user!
-  skip_before_action :authenticate_request
-
-
+  #skip_before_action :authenticate_request
   def index
     @articles=Article.all.order("id")
     #@articles=Article.accessible_by(current_ability)
-
   end
   def api_index
     @articles=Article.all.order("id")
